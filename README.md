@@ -12,4 +12,4 @@
 6. По адресу `http://localhost:8000/docs` будет документация по эндпоинтам
 
 ## Тестирование
-Для запуска тестов используйте команду `docker-compose run web pytest`.
+Для запуска тестов используйте команду `docker-compose run web pytest tests/test.py`.
