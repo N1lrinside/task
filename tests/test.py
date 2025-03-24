@@ -27,3 +27,15 @@ def test_get_password():
     encrypted_password = response.json()["password"]
     decrypted_password = decrypt_password(encrypted_password)
     assert decrypted_password == "test123"
+
+
+def test_search_passwords():
+    client.post("/password/service1", json={"password": "pass1"})
+    client.post("/password/service2", json={"password": "pass2"})
+    client.post("/password/52", json={"password": "pass3"})
+
+    response = client.get("/password/?service_name=service")
+    assert response.status_code == 200
+
+    results = response.json()
+    assert len(results) == 3
